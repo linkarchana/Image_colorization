@@ -9,6 +9,7 @@ In this project goal is to create coloured images using black and white image as
 3)Then a Patch Discriminator is used to train the model further by comparing it to original image.
 
 RGB vs L*a*b
+
 When we load an image, we get a rank-3 (height, width, color) array with the last axis containing the color data for our image. These data represent color in RGB color space and there are 3 numbers for each pixel indicating how much Red, Green, and Blue the pixel is.
 In L*a*b color space, we have again three numbers for each pixel but these numbers have different meanings. The first number (channel), L, encodes the Lightness of each pixel and when we visualize this channel (the second image in the row below) it appears as a black and white image. The *a and *b channels encode how much green-red and yellow-blue each pixel is, respectively.
 ![image](https://user-images.githubusercontent.com/101972579/175314977-bf48db47-322a-4214-9089-a695a38bbf08.png)
