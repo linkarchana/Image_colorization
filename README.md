@@ -34,6 +34,7 @@ LcGAN (G, D) =Ex,y[log D(x, y)]+Ex,z[log(1 − D(x, G(x, z))]
 ### Loss function
 
 The earlier loss function helps to produce good-looking colorful images that seem real, but to further help the models and introduce some supervision in our task, we combine this loss function with L1 Loss (you might know L1 loss as mean absolute error) of the predicted colors compared with the actual colors:
+
 ![image](https://user-images.githubusercontent.com/101972579/175315980-5c5986c2-c13c-434e-9cd7-c0d01f76f771.png)
  
 If we use L1 loss alone, the model still learns to colorize the images but it will be conservative and most of the time uses colors like “gray” or “brown” because when it doubts which color is the best, it takes the average and uses these colors to reduce the L1 loss as much as possible (it is similar to the blurring effect of L1 or L2 loss in super resolution task). Also, the L1 Loss is preferred over L2 loss (or mean squared error) because it reduces that effect of producing greyish images. So, our combined loss function will be:
