@@ -1,9 +1,13 @@
 # Image_colorization
 Image Colorization Using Conditional GANs
 In this project goal is to create coloured images using black and white image as input. In order  to achieve this the following pipeline is implemented –
+
 1)RGB image is converted to LAB image and the three channels are separated, this L channel is passed to generator as input.
+
 2)Generator produces channel AB  using conditional GAN loss and L1 loss. This generator incorporates a U-net architecture.
+
 3)Then a Patch Discriminator is used to train the model further by comparing it to original image.
+
 RGB vs L*a*b
 When we load an image, we get a rank-3 (height, width, color) array with the last axis containing the color data for our image. These data represent color in RGB color space and there are 3 numbers for each pixel indicating how much Red, Green, and Blue the pixel is.
 In L*a*b color space, we have again three numbers for each pixel but these numbers have different meanings. The first number (channel), L, encodes the Lightness of each pixel and when we visualize this channel (the second image in the row below) it appears as a black and white image. The *a and *b channels encode how much green-red and yellow-blue each pixel is, respectively.
@@ -41,4 +45,4 @@ We provide noise in the form of dropout, applied on several layers of our genera
 Discriminator
 To model high frequencies, it is sufficient to restrict our attention to the structure in local image patches. Therefore, we design a discriminator architecture – which we term a PatchGAN – that only penalizes structure at the scale of patches. This discriminator tries to classify if each N ×N(here 70*70) patch in an image is real or fake. We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.
 
-This pix2pix paper was of great help throughout [1611.07004.pdf](https://github.com/linkarchana/Image_colorization/files/8966086/1611.07004.pdf)
+Mentioned pix2pix paper was of great help throughout [1611.07004.pdf](https://github.com/linkarchana/Image_colorization/files/8966086/1611.07004.pdf)
