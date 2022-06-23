@@ -7,7 +7,7 @@ In this project goal is to create coloured images using black and white image as
 RGB vs L*a*b
 When we load an image, we get a rank-3 (height, width, color) array with the last axis containing the color data for our image. These data represent color in RGB color space and there are 3 numbers for each pixel indicating how much Red, Green, and Blue the pixel is.
 In L*a*b color space, we have again three numbers for each pixel but these numbers have different meanings. The first number (channel), L, encodes the Lightness of each pixel and when we visualize this channel (the second image in the row below) it appears as a black and white image. The *a and *b channels encode how much green-red and yellow-blue each pixel is, respectively.
- ![BoxHiGIF](https://user-images.githubusercontent.com/101972579/175314549-f3e8706c-f79e-44df-9a76-97adf8c66687.gif)
+![image](https://user-images.githubusercontent.com/101972579/175314977-bf48db47-322a-4214-9089-a695a38bbf08.png)
 
 In colorisation problems we use lab image space as it is easier to predict 2 (A&B) channels than 3(R,G&B) channels.
 Conditional GAN
