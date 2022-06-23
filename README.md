@@ -45,6 +45,7 @@ Both generator and discriminator use modules of the form convolution-BatchNorm-R
 ### Generator
 
 We provide noise in the form of dropout, applied on several layers of our generator at both training and test time. A defining feature of image-to-image translation problems is that they map a high-resolution input grid to a high-resolution output grid. In encoder-decoder network  the input is passed through a series of layers that progressively downsample, until a bottleneck layer, at which point the process is reversed. Such a network requires that all information flow pass through all the layers, including the bottleneck. For many image translation problems, there is a great deal of low-level information shared between the input and output, and it would be desirable to shuttle this information directly across the net. To give the generator a means to circumvent the bottleneck for information like this, we add skip connections, following the general shape of a “U-Net” . Specifically, we add skip connections between each layer i and layer n − i, where n is the total number of layers. Each skip connection simply concatenates all channels at layer i with those at layer n − i.
+
  ![image](https://user-images.githubusercontent.com/101972579/175316194-e6a54235-ed6c-4e48-9dc8-3b44ef32007e.png)
 
 ### Discriminator
