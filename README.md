@@ -51,4 +51,4 @@ We provide noise in the form of dropout, applied on several layers of our genera
 
 To model high frequencies, it is sufficient to restrict our attention to the structure in local image patches. Therefore, we design a discriminator architecture – which we term a PatchGAN – that only penalizes structure at the scale of patches. This discriminator tries to classify if each N ×N(here 70*70) patch in an image is real or fake. We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.
 
-Mentioned pix2pix paper was of great help throughout [1611.07004.pdf](https://github.com/linkarchana/Image_colorization/files/8966086/1611.07004.pdf)
+Attached pix2pix paper was of great help throughout [1611.07004.pdf](https://github.com/linkarchana/Image_colorization/files/8966086/1611.07004.pdf)
