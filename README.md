@@ -1,5 +1,6 @@
-# Image_colorization
-Image Colorization Using Conditional GANs
+__# Image_colorization
+##Image Colorization Using Conditional GANs__
+
 In this project goal is to create coloured images using black and white image as input. In order  to achieve this the following pipeline is implemented –
 
 1)RGB image is converted to LAB image and the three channels are separated, this L channel is passed to generator as input.
@@ -8,7 +9,7 @@ In this project goal is to create coloured images using black and white image as
 
 3)Then a Patch Discriminator is used to train the model further by comparing it to original image.
 
-RGB vs L*a*b
+__###RGB vs L*a*b__
 
 When we load an image, we get a rank-3 (height, width, color) array with the last axis containing the color data for our image. These data represent color in RGB color space and there are 3 numbers for each pixel indicating how much Red, Green, and Blue the pixel is.
 In L*a*b color space, we have again three numbers for each pixel but these numbers have different meanings. The first number (channel), L, encodes the Lightness of each pixel and when we visualize this channel (the second image in the row below) it appears as a black and white image. The *a and *b channels encode how much green-red and yellow-blue each pixel is, respectively.
@@ -30,7 +31,7 @@ In cGANs, a conditional setting is applied, meaning that both the generator and 
 
 LcGAN (G, D) =Ex,y[log D(x, y)]+Ex,z[log(1 − D(x, G(x, z))]
 
-Loss function
+__###Loss function__
 
 The earlier loss function helps to produce good-looking colorful images that seem real, but to further help the models and introduce some supervision in our task, we combine this loss function with L1 Loss (you might know L1 loss as mean absolute error) of the predicted colors compared with the actual colors:
 ![image](https://user-images.githubusercontent.com/101972579/175315980-5c5986c2-c13c-434e-9cd7-c0d01f76f771.png)
@@ -41,12 +42,12 @@ If we use L1 loss alone, the model still learns to colorize the images but it wi
 where λ is a coefficient to balance the contribution of the two losses to the final loss (of course the discriminator loss does not involve the L1 loss).
 Both generator and discriminator use modules of the form convolution-BatchNorm-ReLu
 
-Generator
+__###Generator__
 
 We provide noise in the form of dropout, applied on several layers of our generator at both training and test time. A defining feature of image-to-image translation problems is that they map a high-resolution input grid to a high-resolution output grid. In encoder-decoder network  the input is passed through a series of layers that progressively downsample, until a bottleneck layer, at which point the process is reversed. Such a network requires that all information flow pass through all the layers, including the bottleneck. For many image translation problems, there is a great deal of low-level information shared between the input and output, and it would be desirable to shuttle this information directly across the net. To give the generator a means to circumvent the bottleneck for information like this, we add skip connections, following the general shape of a “U-Net” . Specifically, we add skip connections between each layer i and layer n − i, where n is the total number of layers. Each skip connection simply concatenates all channels at layer i with those at layer n − i.
  ![image](https://user-images.githubusercontent.com/101972579/175316194-e6a54235-ed6c-4e48-9dc8-3b44ef32007e.png)
 
-Discriminator
+__###Discriminator__
 
 To model high frequencies, it is sufficient to restrict our attention to the structure in local image patches. Therefore, we design a discriminator architecture – which we term a PatchGAN – that only penalizes structure at the scale of patches. This discriminator tries to classify if each N ×N(here 70*70) patch in an image is real or fake. We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.
 
