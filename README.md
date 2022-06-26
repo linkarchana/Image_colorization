@@ -57,7 +57,7 @@ To model high frequencies, it is sufficient to restrict our attention to the str
 
 ![image](https://user-images.githubusercontent.com/101972579/175826107-2f1f34fc-1adb-4089-b8d3-6dce60d99a14.png)
 
-These results were obtained after training the model for 50 epochs 
+These results were obtained after training the model for 50 epochs. To check losses and other results of trained model click on 
 <A href="https://colab.research.google.com/drive/1Q9HtiCHossGIxGetD_J_eC6rvjokwctE?usp=sharing">Google Colab</A>
 
 
